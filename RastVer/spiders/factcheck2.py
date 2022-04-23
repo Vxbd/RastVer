@@ -1,9 +1,7 @@
 import scrapy
-import
 
-
+import RastVer
 from bs4 import BeautifulSoup
-from quotesbot.spiders.New import New
 
 
 class ToScrapeSpiderXPath(scrapy.Spider):
@@ -103,11 +101,7 @@ class ToScrapeSpiderXPath(scrapy.Spider):
                 print("\n\n\n")
                 print(col)
                 for element in col:
-                    nova = New()
-                    if 'rating:' in element:
-                        pos = col.index(element)
-                        nova.rate = col[pos+1]
-
+                    pass
                 print("\n\n\n")
 
                 #Gardamolo no ficheiro
