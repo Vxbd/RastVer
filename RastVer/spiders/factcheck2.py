@@ -120,13 +120,7 @@ class ToScrapeSpiderXPath(scrapy.Spider):
                     for element in col:
                         if 'ating:' in element:
                             pos = col.index(element)
-                            if '\n' in col[pos + 1]:
-                                nova.rate = col[pos] + col[pos].replace("\n", "-")
-                                break
-                            else:
-                                nova.rate = col[pos]
-                                break
-
+                            nova.rate = col[pos+1]
 
 
                 #Buscamos o claim
@@ -152,9 +146,6 @@ class ToScrapeSpiderXPath(scrapy.Spider):
                         if ':' in col[pos + 1]:
                             nova.claim = col[pos + 2]
                             #break
-
-
-
 
                 #print("\n\n\n")
 
