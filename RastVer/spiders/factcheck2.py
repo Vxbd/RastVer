@@ -145,9 +145,12 @@ class ToScrapeSpiderXPath(scrapy.Spider):
 
                 #Gardamolo no ficheiro
                 filename = f'factcheck.txt'
-                with open(filename, 'a') as f:
-                    f.write(nova.rate + '----' + nova.claim + "\n" + str(col) + '\n')
-                    #f.write(str(col) + "\n")
+                if nova.validation() == True:
+                #if True == True:
+                    with open(filename, 'a') as f:
+                        #f.write(nova.rate + '----' + nova.claim + "\n" + str(col) + '\n')
+                        f.write(nova.print())
+                        #f.write(str(col) + "\n")
 
 
         print("\n\n\n")
