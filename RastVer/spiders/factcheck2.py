@@ -101,7 +101,6 @@ class ToScrapeSpiderXPath(scrapy.Spider):
 
             #Extremos o contido
             for row in rows:
-                # cols = row.xpath('//td').getall()
                 col = row.xpath('td//text()').extract()
                 #print("\n\n\n")
                 #print(col)
@@ -130,22 +129,17 @@ class ToScrapeSpiderXPath(scrapy.Spider):
                         pos = col.index(element)
                         if col[pos + 1] == ' ' and len(col[pos + 1]) == 1:
                             nova.claim = col[pos + 2]
-                            #break
                         elif ':' in col[pos + 1]:
                             nova.claim = col[pos + 2]
-                            #break
                         else:
                             nova.claim = col[pos + 1]
-                            #break
                     elif '):' in element:
                         pos = col.index(element)
                         nova.claim = col[pos + 1]
-                        #break
                     elif ')' in element:
                         pos = col.index(element)
                         if ':' in col[pos + 1]:
                             nova.claim = col[pos + 2]
-                            #break
 
                 #print("\n\n\n")
 
