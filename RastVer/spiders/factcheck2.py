@@ -1,9 +1,14 @@
+import time
+
+import dateutil.utils
 import scrapy
 
 #Biblioteca para procesado de texto
 from bs4 import BeautifulSoup
 
 #Obxectos que imos empregar
+from future.backports.datetime import date
+
 from RastVer.spiders import New
 
 
@@ -20,6 +25,8 @@ class ToScrapeSpiderXPath(scrapy.Spider):
         "https://mediabiasfactcheck.com/category/fact-check-2/"
 #        'https://mediabiasfactcheck.com/2022/03/18/the-latest-fact-checks-curated-by-media-bias-fact-check-03-18-2022/'
     ]
+
+    data = time.strftime("%c")
 
 
     def parse(self, response):
@@ -144,7 +151,8 @@ class ToScrapeSpiderXPath(scrapy.Spider):
                 #print("\n\n\n")
 
                 #Gardamolo no ficheiro
-                filename = f'factcheck.txt'
+                filename = 'factcheck' + self.data + '.txt'
+                #filename = f'factcheck.txt'
                 if nova.validation() == True:
                 #if True == True:
                     with open(filename, 'a') as f:

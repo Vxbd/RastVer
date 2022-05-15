@@ -9,6 +9,8 @@ class New:
             return False
         elif self.claim == None:
             return False
+        elif self.claim == '\n':
+            return False
 
         #Validation that checks the content of the fields to avoid deteccion error
         if hard == False:
@@ -20,4 +22,4 @@ class New:
 
 
     def print(self):
-        return str(self.rate) + "," + str(self.claim) + ",\n"
+        return str(self.rate) + ";." + str(self.claim) + ";,\n"
