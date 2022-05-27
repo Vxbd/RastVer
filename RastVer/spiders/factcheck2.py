@@ -115,38 +115,38 @@ class ToScrapeSpiderXPath(scrapy.Spider):
                 #Creamos a nova
                 nova = New.New()
 
-                #Collemos o rate ditinguindo se é de unha ou duas liñas
-                if '\n' in col[1]:
-                    nova.rate = col[0] + col[1].replace("\n", "-")
-                else:
-                    nova.rate = col[0]
+                if len(col) > 0:
+                    #Collemos o rate distinguindo se é de unha ou duas liñas
+                    if len(col) > 1 and '\n' in col[1]:
+                        nova.rate = col[0] + col[1].replace("\n", "-")
+                    else:
+                        nova.rate = col[0]
 
-                #Comprobamos que sexa unha clasificación valida e senon reintentamos
-                if not nova.rate in self.posiblesRate:
+                    #Comprobamos que sexa unha clasificación valida e senon reintentamos
+                    if not nova.rate in self.posiblesRate:
+                        for element in col:
+                            if 'ating:' in element:
+                                pos = col.index(element)
+                                nova.rate = col[pos+1]
+
+
+                    #Buscamos o claim
+                    #Mejoraría el rendimiento sin los breaks
                     for element in col:
-                        if 'ating:' in element:
-                            pos = col.index(element)
-                            nova.rate = col[pos+1]
-
-
-                #Buscamos o claim
-                #Mejoraría el rendimiento sin los breaks
-                for element in col:
-                    if 'laim' in element and ':' in element:
                         pos = col.index(element)
-                        if col[pos + 1] == ' ' and len(col[pos + 1]) == 1:
-                            nova.claim = col[pos + 2]
-                        elif ':' in col[pos + 1]:
-                            nova.claim = col[pos + 2]
-                        else:
-                            nova.claim = col[pos + 1]
-                    elif '):' in element:
-                        pos = col.index(element)
-                        nova.claim = col[pos + 1]
-                    elif ')' in element:
-                        pos = col.index(element)
-                        if ':' in col[pos + 1]:
-                            nova.claim = col[pos + 2]
+                        if len(col) > pos + 1:
+                            if 'laim' in element and ':' in element:
+                                if len(col) > pos + 2 and col[pos + 1] == ' ' and len(col[pos + 1]) == 1:
+                                        nova.claim = col[pos + 2]
+                                elif ':' in col[pos + 1]:
+                                        nova.claim = col[pos + 2]
+                                else:
+                                        nova.claim = col[pos + 1]
+                            elif '):' in element:
+                                nova.claim = col[pos + 1]
+                            elif ')' in element:
+                                if ':' in col[pos + 1]:
+                                    nova.claim = col[pos + 2]
 
                 #print("\n\n\n")
 

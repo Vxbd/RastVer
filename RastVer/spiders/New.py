@@ -1,16 +1,25 @@
 
 class New:
+    clases = ["TRUE", "MOSTLY-TRUE", "MOSTLY-FALSE", "FALSE", "BLATANT-LIE", "NO-EVIDENCE"]
+
     def __init__(self, rate='None', claim='None'):
-        self.rate = rate
+        self.rate = rate.upper().replace(" ", "-")
         self.claim = claim
 
     def validation(self, hard=False):
-        if self.rate == None:
+        if not self.rate in New.clases:
             return False
         elif self.claim == None:
             return False
+        elif self.claim == 'None':
+            return False
         elif self.claim == '\n':
             return False
+
+        s = self.claim.split(" ")
+        if len(s) < 3:
+            return False
+
 
         #Validation that checks the content of the fields to avoid deteccion error
         if hard == False:
@@ -22,4 +31,4 @@ class New:
 
 
     def print(self):
-        return str(self.rate) + ";." + str(self.claim) + ";,\n"
+        return "\"" + str(self.rate).replace('\n', ' ') + "\" " + "\"" + str(self.claim).replace('\n', ' ').replace('\"', '') + "\"\n"
