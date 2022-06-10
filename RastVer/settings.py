@@ -89,5 +89,5 @@ COOKIES_ENABLED = False
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # Activamos o log cara un ficheiro en lugar de cara a terminal
-LOG_STDOUT = True
-LOG_FILE = '/home/victorxbd/Documentos/GREI/Cuarto/TFG/Rastrexador/RastVer/log.txt'
+#LOG_STDOUT = True
+#LOG_FILE = '/home/victorxbd/Documentos/GREI/Cuarto/TFG/Rastrexador/RastVer/log.txt'
