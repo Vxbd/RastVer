@@ -1,3 +1,9 @@
+# Estrutura
+Este respositorio ten dúas partes:
+- RastVer: Rastrexador para obter inforción de información verificada.
+- Datos: Os conxuntos de datos obtidos finalmente co rastrexador final.
+
+
 # RastVer (Rastrexador de información Verificada)
 
 Descripción: Rastrexador baseado en Scrapy e Python.
@@ -44,3 +50,10 @@ DOWNLOAD_DELAY = 1
 Modificacións:
 -----------------
 A araña que realiza o seguimento de links é spiders/rastver.py. Fai uso da clase New. 
+
+
+# Datos
+
+No cartafol de datos están os conxuntos de datos finais obtidos executando o rastexador tanto dende unha rede LAN como dende a rede Eduroam. Ademáis está dispoñibles os logs de cada unha das execucións onde se obtivo cada coxnunto de datos.
+
+Destar que o nome de cada dataset comeza por "factcheck" e e do mesmo xeito a araña empregada tiña o nome factchek2. Isto é debido a que o programa foi sendo modificado e tendo varias versións para acadar os resultados actuais. Na última iteración do proceso o nome da araña era factchek2, pero non existe diferencia algunha coa actual denominada rastver. Foi un cambio de nomenclatura destinado a aclarar o código do programa-
